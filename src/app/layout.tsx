@@ -1,22 +1,27 @@
-import type {Metadata} from 'next';
-import {JetBrains_Mono} from 'next/font/google';
-import './globals.css';
-
-const jetBrainsMono = JetBrains_Mono({subsets: ['latin']});
+import './globals.css'
+import type { Metadata } from 'next'
+import Navbar from '@/components/navbar'
+import { poppins, spaceGrotesk } from '@/lib/fonts'
+import { ThemeProvider } from 'next-themes'
 
 export const metadata: Metadata = {
-  title: 'Juno / Next.js Example',
-  description: 'Welcome to my app!'
-};
+    title: 'Spira Network',
+    description: 'A Social App For Regenerative Networks',
+}
 
 export default function RootLayout({
-  children
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode
 }>) {
-  return (
-    <html lang="en">
-      <body className={`${jetBrainsMono.className} bg-white dark:bg-black`}>{children}</body>
-    </html>
-  );
+    return (
+        <html lang='en' suppressHydrationWarning>
+            <body className={`${spaceGrotesk.variable} ${poppins.variable} font-body`}>
+                <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+                    <Navbar />
+                    {children}
+                </ThemeProvider>
+            </body>
+        </html>
+    )
 }
