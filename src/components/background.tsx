@@ -1,15 +1,16 @@
-import Image from 'next/image';
+import Image from 'next/image'
 
 export const Background = () => {
-  return (
-    <div className="hidden sm:block fixed top-[400px] tall:top-2/4 right-0 -z-10 translate-x-2/4 lg:translate-x-1/3 -translate-y-2/4 min-h-[800px] h-[100dvh] aspect-square">
-      <Image
-        src="/juno_illustration.svg"
-        role="presentation"
-        loading="lazy"
-        alt="An astronaut floating in space around planet Juno orbited by satellites, stars in the background."
-        fill={true}
-      />
-    </div>
-  );
-};
+    return (
+        <div className='fixed inset-0 -z-10 h-dvh w-dvw'>
+            <Image
+                src='/bg-gradient.svg'
+                role='presentation'
+                loading='lazy'
+                alt='A dark pastel gradient background.'
+                fill={true}
+                className='object-cover'
+            />
+        </div>
+    )
+}
