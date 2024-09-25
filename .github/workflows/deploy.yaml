@@ -1,30 +1,49 @@
 name: Deploy to Juno
 
 on:
-  push:
-    branches: [main]
+    release:
+        types: [released]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out the repo
-        uses: actions/checkout@v4
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check out the repo
+              uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20.x'
-          registry-url: 'https://registry.npmjs.org'
+            - name: Setup pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                  version: '9.x'
+                  run_install: |
+                      args: [--global, vercel]
 
-      - name: Install Dependencies
-        run: npm ci
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '20'
+                  cache: 'pnpm'
 
-      - name: Build
-        run: npm run build
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
 
-      - name: Deploy to Juno
-        uses: junobuild/juno-action@main
-        with:
-          args: deploy
-        env:
-          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+            - name: Create pnpm store directory if needed
+              run: mkdir -p ~/.pnpm-store
+
+            - name: Cache pnpm store
+              uses: actions/cache@v4
+              with:
+                  path: ~/.pnpm-store
+                  key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+              restore-keys: |
+                  ${{ runner.os }}-pnpm-
+
+            - name: Build
+              run: pnpm run build
+
+            - name: Deploy to Juno
+              uses: junobuild/juno-action@main
+              with:
+                  args: deploy
+              env:
+                  JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
