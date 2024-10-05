@@ -7,6 +7,9 @@ import { ThemeProvider } from 'next-themes'
 export const metadata: Metadata = {
     title: 'Spira Network',
     description: 'A Social App For Regenerative Networks',
+    icons: {
+        icon: '/favicon.svg',
+    },
 }
 
 export default function RootLayout({

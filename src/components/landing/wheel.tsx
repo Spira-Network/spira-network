@@ -1,16 +1,16 @@
 import Image from 'next/image'
 import { Button } from '../ui/button'
+// import wheel from '@/../public/wheel.png'
 
 export default function Wheel() {
     return (
         <div className='flex flex-col items-center gap-4 text-white'>
             <div className='relative size-96'>
-                <Image
-                    src='/wheel.svg'
+                <img
+                    src='/wheel.png'
                     role='presentation'
                     loading='lazy'
                     alt='A spinning wheel with a spiral pattern.'
-                    fill={true}
                     className='object-cover'
                 />
             </div>

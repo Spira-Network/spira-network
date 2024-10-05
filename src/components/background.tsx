@@ -8,8 +8,8 @@ export const Background = () => {
                 role='presentation'
                 loading='lazy'
                 alt='A dark pastel gradient background.'
-                fill={true}
                 className='object-cover'
+                fill
             />
         </div>
     )
