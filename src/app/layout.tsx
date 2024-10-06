@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 import Navbar from '@/components/navbar'
 import { poppins, spaceGrotesk } from '@/lib/fonts'
 import { ThemeProvider } from 'next-themes'
-import { Footer } from '@/components/footer'
+import Footer from '@/components/landing/footer'
 import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
@@ -26,7 +26,7 @@ export default function RootLayout({
                 className={cn(`${spaceGrotesk.variable} ${poppins.variable}`, 'flex min-h-screen flex-col font-body')}>
                 <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
                     <Navbar />
-                    <main className='flex-grow px-4 py-8 sm:px-6 sm:py-12 lg:px-8'>{children}</main>
+                    <main className='container mx-auto flex-grow'>{children}</main>
                     <Footer />
                 </ThemeProvider>
             </body>
