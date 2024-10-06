@@ -1,6 +1,6 @@
 import { Background } from '@/components/background'
-import About from '@/components/landing/about'
-import Headline from '@/components/landing/headline'
+import Features from '@/components/landing/features'
+import HeadlineTop from '@/components/landing/headline-top'
 import Hero from '@/components/landing/hero'
 import Preview from '@/components/landing/preview'
 import Wheel from '@/components/landing/wheel'
@@ -8,18 +8,18 @@ import Wheel from '@/components/landing/wheel'
 export default function Home() {
     return (
         <>
-            <div className='container mx-auto space-y-16 px-4 md:space-y-32'>
-                <div className='mt-12 flex flex-col md:mt-24 md:flex-row md:justify-between'>
-                    <div className='mb-8 w-full md:mb-0 md:w-1/2 md:max-w-2xl'>
+            <div className='space-y-16 md:space-y-32'>
+                <div className='flex flex-col lg:flex-row lg:items-center lg:justify-between lg:gap-8'>
+                    <div className='mb-12 w-full lg:mb-0 lg:w-1/2'>
                         <Hero />
                     </div>
-                    <div className='w-full md:w-1/2 md:max-w-2xl'>
+                    <div className='w-full lg:w-1/2'>
                         <Wheel />
                     </div>
                 </div>
-                <Headline />
+                <HeadlineTop />
                 <Preview />
-                <About />
+                <Features />
             </div>
             <Background />
         </>
