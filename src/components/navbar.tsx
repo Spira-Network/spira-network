@@ -44,7 +44,7 @@ export default function Navbar() {
                             <MapIcon className='size-6 fill-white' />
                             <FeedIcon className='size-6 fill-white' />
                             <Button className='mx-5 rounded-full bg-[#C9CEFF] px-5 py-2 font-heading text-base text-[#121212]'>
-                                LaunchSpira
+                                Launch Spira
                             </Button>
                         </div>
                     )}
@@ -82,7 +82,7 @@ export default function Navbar() {
                     <div className='flex items-center justify-between'>
                         <MapIcon className='size-6 fill-white' />
                         <Button className='rounded-full bg-[#C9CEFF] px-5 py-2 font-heading text-base text-[#121212]'>
-                            LaunchSpira
+                            Launch Spira
                         </Button>
                         <FeedIcon className='size-6 fill-white' />
                     </div>
