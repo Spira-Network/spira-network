@@ -1,8 +1,11 @@
 import './globals.css'
+
 import type { Metadata } from 'next'
 import Navbar from '@/components/navbar'
 import { poppins, spaceGrotesk } from '@/lib/fonts'
 import { ThemeProvider } from 'next-themes'
+import { Footer } from '@/components/footer'
+import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
     title: 'Spira Network',
@@ -19,10 +22,12 @@ export default function RootLayout({
 }>) {
     return (
         <html lang='en' suppressHydrationWarning>
-            <body className={`${spaceGrotesk.variable} ${poppins.variable} font-body`}>
+            <body
+                className={cn(`${spaceGrotesk.variable} ${poppins.variable}`, 'flex min-h-screen flex-col font-body')}>
                 <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
                     <Navbar />
-                    {children}
+                    <main className='flex-grow px-4 py-8 sm:px-6 sm:py-12 lg:px-8'>{children}</main>
+                    <Footer />
                 </ThemeProvider>
             </body>
         </html>

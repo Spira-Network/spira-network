@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export const Background = () => {
     return (
-        <div className='fixed inset-0 -z-10 h-dvh w-dvw'>
+        <div className='fixed inset-0 -z-10'>
             <Image
                 src='/bg-gradient.svg'
                 role='presentation'
