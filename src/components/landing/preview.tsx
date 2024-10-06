@@ -1,13 +1,17 @@
 import Em from './empashized'
-
+import Image from 'next/image'
 export default function Preview() {
     return (
         <section className='mx-auto max-w-7xl px-4 py-8 md:py-12 lg:py-16'>
             <div className='grid grid-cols-1 items-center gap-8 lg:grid-cols-8 lg:gap-10'>
                 <PreviewText />
                 <div className='col-span-1 grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8 lg:col-span-5'>
-                    <img src='landing/card-1.png' alt='Preview card 1' className='h-auto w-full rounded-lg shadow-lg' />
-                    <img src='landing/card-2.png' alt='Preview card 2' className='h-auto w-full rounded-lg shadow-lg' />
+                    <div className='relative h-96'>
+                        <Image src='landing/card-1.png' alt='Preview card 1' className='object-contain' fill />
+                    </div>
+                    <div className='relative h-96'>
+                        <Image src='landing/card-2.png' alt='Preview card 2' className='object-contain' fill />
+                    </div>
                 </div>
             </div>
         </section>
