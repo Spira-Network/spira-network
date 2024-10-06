@@ -2,11 +2,13 @@ import Em from './empashized'
 
 export default function Preview() {
     return (
-        <section className='grid grid-cols-8 gap-10 align-middle [&>:first-child]:col-span-3'>
-            <PreviewText />
-            <div className='col-span-5 grid grid-cols-2 gap-8'>
-                <img src='landing/card-1.png' />
-                <img src='landing/card-2.png' />
+        <section className='mx-auto max-w-7xl px-4 py-8 md:py-12 lg:py-16'>
+            <div className='grid grid-cols-1 items-center gap-8 lg:grid-cols-8 lg:gap-10'>
+                <PreviewText />
+                <div className='col-span-1 grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8 lg:col-span-5'>
+                    <img src='landing/card-1.png' alt='Preview card 1' className='h-auto w-full rounded-lg shadow-lg' />
+                    <img src='landing/card-2.png' alt='Preview card 2' className='h-auto w-full rounded-lg shadow-lg' />
+                </div>
             </div>
         </section>
     )
@@ -14,13 +16,13 @@ export default function Preview() {
 
 function PreviewText() {
     return (
-        <aside className='space-y-2'>
-            <h1 className='font-heading text-2xl font-bold'>
-                <Em>A space to co-create</Em>, <Em>connect </Em>with <Em>proposals </Em>, <Em>resources </Em>and
-                specific <Em>needs</Em>; solutions, <Em>desires </Em>& <Em>services </Em>in an <Em>easy </Em>&{' '}
-                <Em>ecosystemic way</Em>.
-            </h1>
-            <p className='font-medium'>
+        <aside className='col-span-1 space-y-4 md:space-y-6 lg:col-span-3'>
+            <h2 className='font-heading text-xl font-bold leading-tight sm:text-2xl lg:text-3xl'>
+                Spira users can <Em>co-create</Em>, <Em>connect</Em> with <Em>proposals</Em>, <Em>resources</Em> and
+                specific <Em>needs</Em>; <Em>objectives</Em>, <Em>interests</Em> & <Em>services</Em> in an <Em>easy</Em>{' '}
+                & <Em>ecosystemic way</Em>.
+            </h2>
+            <p className='text-pretty text-sm font-medium sm:text-base lg:text-lg'>
                 Spira allows infinite possibilities to align ourselves with our personal and collective sovereignty. It
                 is a site to reconstruct new social, political, economic, cultural, techno-productive, educational and
                 other systems collaboratively from each one.
