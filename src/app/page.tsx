@@ -1,6 +1,7 @@
 import { Background } from '@/components/background'
 import Features from '@/components/landing/features'
 import HeadlineTop from '@/components/landing/headline-top'
+import HeadlineBottom from '@/components/landing/headline-bottom'
 import Hero from '@/components/landing/hero'
 import Preview from '@/components/landing/preview'
 import Wheel from '@/components/landing/wheel'
@@ -20,6 +21,7 @@ export default function Home() {
                 <HeadlineTop />
                 <Preview />
                 <Features />
+                <HeadlineBottom />
             </div>
             <Background />
         </>
