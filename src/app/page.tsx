@@ -6,6 +6,7 @@ import Hero from '@/components/landing/hero'
 import Preview from '@/components/landing/preview'
 import Wheel from '@/components/landing/wheel'
 import Areas from '@/components/landing/areas'
+import Functionalities from '@/components/landing/functionalities'
 
 export default function Home() {
     return (
@@ -22,6 +23,7 @@ export default function Home() {
                 <HeadlineTop />
                 <Preview />
                 <Features />
+                <Functionalities />
                 <Areas />
                 <HeadlineBottom />
             </div>
