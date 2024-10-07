@@ -34,7 +34,7 @@ export default function Navbar() {
     return (
         <>
             <header className='relative z-50 border-b border-[#C9CEFF] bg-[#121212] py-4'>
-                <nav className='container mx-auto flex items-center justify-between px-4'>
+                <nav className='container mx-auto flex items-center justify-between px-4 md:px-0'>
                     <span className='flex items-center gap-1 font-heading font-bold'>
                         <LogoIcon className='size-6 fill-white' />
                         <span className='text-2xl font-bold text-white'>Spira</span>
@@ -43,7 +43,7 @@ export default function Navbar() {
                         <div className='flex items-center gap-5'>
                             <MapIcon className='size-6 fill-white' />
                             <FeedIcon className='size-6 fill-white' />
-                            <Button className='mx-5 rounded-full bg-[#C9CEFF] px-5 py-2 font-heading text-base text-[#121212]'>
+                            <Button className='ml-5 rounded-full bg-[#C9CEFF] px-5 py-2 font-heading text-base text-[#121212]'>
                                 Launch Spira
                             </Button>
                         </div>
