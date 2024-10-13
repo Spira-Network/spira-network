@@ -103,15 +103,13 @@ function Socials() {
         <ul className='mx-auto mb-auto grid grid-cols-4 content-center gap-4' id='footer-socials'>
             {socials.map((social, index) => (
                 <li key={index} className='size-8'>
-                    <Link href='#footer-socials' className='block size-full'>
-                        <div className='relative size-full'>
-                            <Image
-                                src={`/landing/socials/${social.icon}`}
-                                alt={`${social.name} Icon`}
-                                className='object-contain'
-                                fill
-                            />
-                        </div>
+                    <Link href='#footer-socials' className='relative block size-full'>
+                        <Image
+                            src={`/landing/socials/${social.icon}`}
+                            alt={`${social.name} Icon`}
+                            className='object-contain'
+                            fill
+                        />
                     </Link>
                 </li>
             ))}
