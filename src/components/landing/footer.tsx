@@ -5,7 +5,7 @@ import Image from 'next/image'
 export default function Footer() {
     return (
         <footer className='mt-12 bg-[#121212] py-12'>
-            <div className='container mx-auto border-t-2 border-white px-4 pt-12 md:px-0'>
+            <div className='container border-t-2 border-white px-4 pt-12 md:px-0'>
                 <div className='flex flex-wrap justify-between gap-8 lg:flex-nowrap'>
                     <div className='flex flex-col gap-6 lg:justify-between'>
                         <SpiraLogo />

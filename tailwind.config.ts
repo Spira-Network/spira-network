@@ -4,6 +4,9 @@ const config: Config = {
     content: ['./src/**/*.tsx'],
     darkMode: 'class',
     theme: {
+        container: {
+            center: true,
+        },
         extend: {
             borderRadius: {
                 lg: 'var(--radius)',

@@ -61,7 +61,7 @@ const functionalityData = [
 
 function Summary() {
     return (
-        <div className='container mx-auto px-4 py-8'>
+        <div className='container px-4 py-8'>
             <h2 className='mb-8 text-center font-heading uppercase'>functionalities</h2>
             <div className='flex flex-wrap justify-center gap-8 lg:flex-nowrap'>
                 {functionalityData.map((item, index) => (

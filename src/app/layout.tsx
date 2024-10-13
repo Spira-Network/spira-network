@@ -26,7 +26,7 @@ export default function RootLayout({
                 className={cn(`${spaceGrotesk.variable} ${poppins.variable}`, 'flex min-h-screen flex-col font-body')}>
                 <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
                     <Navbar />
-                    <main className='container mx-auto flex-grow'>{children}</main>
+                    <main className='container grow'>{children}</main>
                     <Footer />
                 </ThemeProvider>
             </body>

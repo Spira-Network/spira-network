@@ -83,7 +83,7 @@ const areaData = [
 
 export default function Areas() {
     return (
-        <section className='container mx-auto px-16 pt-8'>
+        <section className='container px-16 pt-8'>
             <h1 className='text-center font-heading text-5xl font-bold text-[#C9CEFF]'>12 Organic Areas of Being</h1>
             <div className='mb-32 flex items-center justify-center p-12'>
                 <span className='relative size-36'>
