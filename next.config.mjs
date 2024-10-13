@@ -4,6 +4,7 @@ import { withJuno } from '@junobuild/nextjs-plugin'
 const nextConfig = {
     images: { unoptimized: true },
     output: 'export',
+    reactStrictMode: true,
 }
 
 export default withJuno({ nextConfig, juno: { container: true } })
