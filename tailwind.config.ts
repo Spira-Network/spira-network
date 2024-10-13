@@ -2,7 +2,8 @@ import type { Config } from 'tailwindcss'
 
 const config: Config = {
     content: ['./src/**/*.tsx'],
-    darkMode: 'class',
+    darkMode: ['class'],
+    safelist: ['dark'],
     theme: {
         container: {
             center: true,
