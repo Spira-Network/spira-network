@@ -8,6 +8,7 @@ import { Button } from './ui/button'
 import BurgerMenuIcon from './icons/burger-menu-icon'
 import { XIcon } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Link from 'next/link'
 
 const BOTTOM_BAR_HEIGHT = '64px'
 
@@ -35,10 +36,10 @@ export default function Navbar() {
         <>
             <header className='relative z-50 border-b border-[#C9CEFF] bg-[#121212] py-4'>
                 <nav className='container flex items-center justify-between px-4 md:px-0'>
-                    <span className='flex items-center gap-1 font-heading font-bold'>
+                    <Link href='/' className='flex items-center gap-1 font-heading text-2xl font-bold'>
                         <LogoIcon className='size-6 fill-white' />
-                        <span className='text-2xl font-bold text-white'>Spira</span>
-                    </span>
+                        Spira
+                    </Link>
                     {!isMobile && (
                         <div className='flex items-center gap-5'>
                             <MapIcon className='size-6 fill-white' />
