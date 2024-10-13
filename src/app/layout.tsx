@@ -1,4 +1,5 @@
 import './globals.css'
+import '@coinbase/onchainkit/styles.css'
 
 import type { Metadata } from 'next'
 import Navbar from '@/components/navbar'
@@ -6,6 +7,7 @@ import { poppins, spaceGrotesk } from '@/lib/fonts'
 import { ThemeProvider } from 'next-themes'
 import Footer from '@/components/landing/footer'
 import { cn } from '@/lib/utils'
+import { Providers } from '@/components/providers'
 
 export const metadata: Metadata = {
     title: 'Spira Network',
@@ -25,9 +27,11 @@ export default function RootLayout({
             <body
                 className={cn(`${spaceGrotesk.variable} ${poppins.variable}`, 'flex min-h-screen flex-col font-body')}>
                 <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
-                    <Navbar />
-                    <main className='container grow'>{children}</main>
-                    <Footer />
+                    <Providers>
+                        <Navbar />
+                        <main className='container grow'>{children}</main>
+                        <Footer />
+                    </Providers>
                 </ThemeProvider>
             </body>
         </html>
