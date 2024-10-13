@@ -1,10 +1,9 @@
 import { withJuno } from '@junobuild/nextjs-plugin'
 
-export default withJuno({
-    juno: { container: true },
-    nextConfig: {
-        images: {
-            unoptimized: true,
-        },
-    },
-})
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+    images: { unoptimized: true },
+    output: 'export',
+}
+
+export default withJuno({ nextConfig, juno: { container: true } })
