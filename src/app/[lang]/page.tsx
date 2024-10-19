@@ -1,49 +1,6 @@
-import { Background } from '@/components/background'
-import Features from '@/components/landing/features'
-import HeadlineTop from '@/components/landing/headline-top'
-import HeadlineBottom from '@/components/landing/headline-bottom'
-import Hero from '@/components/landing/hero'
-import Preview from '@/components/landing/preview'
-import Wheel from '@/components/landing/wheel'
-import Areas from '@/components/landing/areas'
-import Functionalities from '@/components/landing/functionalities'
-import { Metadata } from 'next'
+import { HomePage } from '@/components/pages/home'
+export { generateStaticParams } from '@/lib/utils/static-params'
 
-export const metadata: Metadata = {
-    title: 'Spira Network',
-    description: 'A Social App For Regenerative Networks',
-    icons: {
-        icon: '/favicon.svg',
-    },
-}
-
-export default async function Home({ params: { lang } }: { params: { lang: string } }) {
-    const dictionary = await import(`@/app/dictionaries/${lang}.json`).then(module => module.default)
-
-    return (
-        <>
-            <div className='space-y-16 py-16 md:space-y-32'>
-                <div className='flex flex-col lg:flex-row lg:items-center lg:justify-between lg:gap-8'>
-                    <div className='mb-12 w-full lg:mb-0 lg:w-1/2'>
-                        <Hero />
-                    </div>
-                    <div className='w-full lg:w-1/2'>
-                        <Wheel />
-                    </div>
-                </div>
-                <h1>{dictionary.title}</h1>
-                <HeadlineTop />
-                <Preview />
-                <Features />
-                <Functionalities />
-                <Areas />
-                <HeadlineBottom />
-            </div>
-            <Background />
-        </>
-    )
-}
-
-export async function generateStaticParams() {
-    return ['en', 'es', 'pt', 'fr'].map(lang => ({ lang }))
+export default function Home({ params }: { params: { lang: string } }): React.ReactElement {
+    return <HomePage lang={params.lang} />
 }
