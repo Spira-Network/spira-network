@@ -17,19 +17,24 @@ export const metadata: Metadata = {
     },
 }
 
-export default function RootLayout({
-    children,
-}: Readonly<{
+export async function generateStaticParams() {
+    return ['en', 'es', 'pt', 'fr'].map(lang => ({ lang }))
+}
+
+type Props = {
     children: React.ReactNode
-}>) {
+    params: { lang: string }
+}
+
+export default async function RootLayout({ children, params }: Readonly<Props>) {
     return (
-        <html lang='en' suppressHydrationWarning>
+        <html lang={params.lang} suppressHydrationWarning>
             <body
                 className={cn(`${spaceGrotesk.variable} ${poppins.variable}`, 'flex min-h-screen flex-col font-body')}>
                 <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
                     <Providers>
                         <Navbar />
-                        <main className='container grow'>{children}</main>
+                        <main className='container flex grow'>{children}</main>
                         <Footer />
                     </Providers>
                 </ThemeProvider>
