@@ -7,8 +7,19 @@ import Preview from '@/components/landing/preview'
 import Wheel from '@/components/landing/wheel'
 import Areas from '@/components/landing/areas'
 import Functionalities from '@/components/landing/functionalities'
+import { Metadata } from 'next'
 
-export default function Home() {
+export const metadata: Metadata = {
+    title: 'Spira Network',
+    description: 'A Social App For Regenerative Networks',
+    icons: {
+        icon: '/favicon.svg',
+    },
+}
+
+export default async function Home({ params: { lang } }: { params: { lang: string } }) {
+    const dictionary = await import(`@/app/dictionaries/${lang}.json`).then(module => module.default)
+
     return (
         <>
             <div className='space-y-16 py-16 md:space-y-32'>
@@ -20,6 +31,7 @@ export default function Home() {
                         <Wheel />
                     </div>
                 </div>
+                <h1>{dictionary.title}</h1>
                 <HeadlineTop />
                 <Preview />
                 <Features />
@@ -30,4 +42,8 @@ export default function Home() {
             <Background />
         </>
     )
+}
+
+export async function generateStaticParams() {
+    return ['en', 'es', 'pt', 'fr'].map(lang => ({ lang }))
 }
