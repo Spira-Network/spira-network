@@ -8,8 +8,8 @@ import { ThemeProvider } from 'next-themes'
 import Footer from '@/components/landing/footer'
 import { cn } from '@/lib/utils'
 import { Providers } from '@/components/providers'
-
-export { generateStaticParams } from '@/lib/utils/static-params'
+import { NextIntlClientProvider } from 'next-intl'
+import { getLocale, getMessages } from 'next-intl/server'
 
 export const metadata: Metadata = {
     title: 'Spira Network',
@@ -21,21 +21,23 @@ export const metadata: Metadata = {
 
 type Props = {
     children: React.ReactNode
-    params: { lang: string }
 }
 
-export default async function RootLayout({ children, params }: Readonly<Props>) {
-    const lang = params.lang || 'en' // Provide a default language
+export default async function RootLayout({ children }: Readonly<Props>) {
+    const locale = await getLocale()
+    const messages = await getMessages()
 
     return (
-        <html lang={lang} suppressHydrationWarning>
+        <html lang={locale} suppressHydrationWarning>
             <body
                 className={cn(`${spaceGrotesk.variable} ${poppins.variable}`, 'flex min-h-screen flex-col font-body')}>
                 <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
                     <Providers>
-                        <Navbar />
-                        <main className='container flex grow'>{children}</main>
-                        <Footer />
+                        <NextIntlClientProvider messages={messages}>
+                            <Navbar />
+                            <main className='container flex grow'>{children}</main>
+                            <Footer />
+                        </NextIntlClientProvider>
                     </Providers>
                 </ThemeProvider>
             </body>

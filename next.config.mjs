@@ -1,12 +1,10 @@
-// import { withJuno } from '@junobuild/nextjs-plugin'
+import createNextIntlPlugin from 'next-intl/plugin'
+
+const withNextIntl = createNextIntlPlugin()
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    // images: { unoptimized: true },
-    // output: 'export',
     reactStrictMode: true,
 }
 
-// export default withJuno({ nextConfig, juno: { container: true } })
-
-export default nextConfig
+export default withNextIntl(nextConfig)
