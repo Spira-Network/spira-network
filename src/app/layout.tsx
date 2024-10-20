@@ -27,8 +27,10 @@ type Props = {
 }
 
 export default async function RootLayout({ children, params }: Readonly<Props>) {
+    const lang = params.lang || 'en' // Provide a default language
+
     return (
-        <html lang={params.lang} suppressHydrationWarning>
+        <html lang={lang} suppressHydrationWarning>
             <body
                 className={cn(`${spaceGrotesk.variable} ${poppins.variable}`, 'flex min-h-screen flex-col font-body')}>
                 <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
