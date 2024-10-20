@@ -1,7 +1,5 @@
-type Props = {
-    lang: string
-}
+type Props = {}
 
-export const BookmarksPage: React.FC<Props> = ({ lang }) => {
+export const BookmarksPage: React.FC<Props> = () => {
     return <div>Bookmarks</div>
 }

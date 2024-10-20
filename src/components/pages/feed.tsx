@@ -1,7 +1,5 @@
-type Props = {
-    lang: string
-}
+type Props = {}
 
-export const FeedPage: React.FC<Props> = ({ lang }) => {
+export const FeedPage: React.FC<Props> = () => {
     return <div>Feed</div>
 }

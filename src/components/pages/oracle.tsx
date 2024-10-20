@@ -1,7 +1,5 @@
-type Props = {
-    lang: string
-}
+type Props = {}
 
-export const OraclePage: React.FC<Props> = ({ lang }) => {
+export const OraclePage: React.FC<Props> = () => {
     return <div>Oracle</div>
 }

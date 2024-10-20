@@ -1,7 +1,5 @@
-type Props = {
-    lang: string
-}
+type Props = {}
 
-export const ProfilePage: React.FC<Props> = ({ lang }) => {
-    return <div>Profile {lang}</div>
+export const ProfilePage: React.FC<Props> = () => {
+    return <div>Profile</div>
 }
