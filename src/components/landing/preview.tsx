@@ -6,11 +6,23 @@ export default function Preview() {
             <div className='grid grid-cols-1 items-center gap-8 lg:grid-cols-8 lg:gap-10'>
                 <PreviewText />
                 <div className='col-span-1 grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8 lg:col-span-5'>
-                    <div className='relative h-96'>
-                        <Image src='landing/card-1.png' alt='Preview card 1' className='object-contain' fill />
+                    <div className='relative h-64 sm:h-80 md:h-96'>
+                        <Image
+                            src='/landing/card-1.png'
+                            alt='Preview card 1'
+                            className='object-contain'
+                            fill
+                            sizes='(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw'
+                        />
                     </div>
-                    <div className='relative h-96'>
-                        <Image src='landing/card-2.png' alt='Preview card 2' className='object-contain' fill />
+                    <div className='relative h-64 sm:h-80 md:h-96'>
+                        <Image
+                            src='/landing/card-2.png'
+                            alt='Preview card 2'
+                            className='object-contain'
+                            fill
+                            sizes='(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw'
+                        />
                     </div>
                 </div>
             </div>

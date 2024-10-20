@@ -11,6 +11,7 @@ export default function Wheel() {
                     className='object-cover'
                     priority
                     fill
+                    sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                 />
             </div>
             <h1 className='text-center text-2xl font-bold sm:text-3xl md:text-4xl'>Spira Wheel of wills</h1>
