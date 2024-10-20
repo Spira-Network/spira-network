@@ -13,7 +13,8 @@
                     "src/drizzle/**/*",
                     "src/hooks/**/*",
                     "src/lib/**/*",
-                    "src/server/**/*"
+                    "src/server/**/*",
+                    "src/style/**/*"
                 ]
             },
             {
