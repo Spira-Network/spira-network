@@ -1,25 +1,43 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
+import { useLocale } from 'next-intl'
 
 export default function LanguageSelector() {
     const router = useRouter()
-    const pathname = usePathname()
-    const [currentLang, setCurrentLang] = useState('en')
+    const locale = useLocale()
+    const [currentLang, setCurrentLang] = useState(locale)
 
     useEffect(() => {
-        const lang = pathname.split('/')[1]
-        if (['en', 'es', 'pt', 'fr'].includes(lang)) {
-            setCurrentLang(lang)
-        }
-    }, [pathname])
+        setCurrentLang(locale)
+    }, [locale])
 
     const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const newLang = e.target.value
-        const newPathname = pathname.replace(/^\/[^\/]+/, `/${newLang}`)
-        router.push(newPathname)
+
+        // Update the cookie
+        document.cookie = `NEXT_LOCALE=${newLang}; path=/; max-age=31536000; SameSite=Strict`
+
+        // Start the fadeout effect
+        document.body.classList.add('fadeout')
+
+        // Instant scroll to the beginning
+        window.scrollTo(0, 0)
+
+        // Wait for the fadeout to finish before refreshing
+        setTimeout(() => {
+            router.refresh()
+            // Remove the fadeout class and add fadein after the refresh
+            setTimeout(() => {
+                document.body.classList.remove('fadeout')
+                document.body.classList.add('fadein')
+                // Remove the fadein class after the animation
+                setTimeout(() => {
+                    document.body.classList.remove('fadein')
+                }, 500)
+            }, 100) // Small delay to ensure the refresh has started
+        }, 300) // Adjust this time according to the duration of your fadeout animation
     }
 
     return (
@@ -33,9 +51,9 @@ export default function LanguageSelector() {
                 onChange={handleLanguageChange}
                 className='rounded bg-white/10 px-2 py-1 text-white'>
                 <option value='en'>English</option>
-                <option value='es'>Español</option>
-                <option value='pt'>Português</option>
-                <option value='fr'>Français</option>
+                <option value='es'>Spanish</option>
+                <option value='pt'>Portuguese</option>
+                <option value='fr'>French</option>
             </select>
         </div>
     )
