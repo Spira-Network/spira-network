@@ -1,4 +1,4 @@
-import '@/app/globals.css'
+import '@/style/globals.css'
 import '@coinbase/onchainkit/styles.css'
 
 import type { Metadata } from 'next'
