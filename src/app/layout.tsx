@@ -4,7 +4,6 @@ import '@coinbase/onchainkit/styles.css'
 import type { Metadata } from 'next'
 import { poppins, spaceGrotesk } from '@/lib/fonts'
 import { ThemeProvider } from 'next-themes'
-import Footer from '@/components/landing/footer'
 import { cn } from '@/lib/utils'
 import { Providers } from '@/components/providers'
 import { NextIntlClientProvider } from 'next-intl'
@@ -21,9 +20,10 @@ export const metadata: Metadata = {
 
 type Props = {
     children: React.ReactNode
+    footer: React.ReactNode
 }
 
-export default async function RootLayout({ children }: Readonly<Props>) {
+export default async function RootLayout({ children, footer }: Readonly<Props>) {
     const locale = await getLocale()
     const messages = await getMessages()
 
@@ -35,7 +35,8 @@ export default async function RootLayout({ children }: Readonly<Props>) {
                     <Providers>
                         <NextIntlClientProvider messages={messages}>
                             <Header />
-                            <main className='container flex grow'>{children}</main>
+                            <main className='container flex grow flex-col'>{children}</main>
+                            {footer}
                         </NextIntlClientProvider>
                     </Providers>
                 </ThemeProvider>

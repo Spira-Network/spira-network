@@ -1,12 +1,12 @@
-import { Background } from '../background'
-import Areas from '../landing/areas'
-import Features from '../landing/features'
-import Functionalities from '../landing/functionalities'
-import HeadlineBottom from '../landing/headline-bottom'
-import HeadlineTop from '../landing/headline-top'
-import Hero from '../landing/hero'
-import Preview from '../landing/preview'
-import Wheel from '../landing/wheel'
+import Hero from '@/features/landing/components/hero'
+import Wheel from './components/wheel'
+import HeadlineTop from './components/headline-top'
+import Areas from './components/areas'
+import { Background } from './components/background'
+import Features from './components/features'
+import Functionalities from './components/functionalities'
+import HeadlineBottom from './components/headline-bottom'
+import Preview from './components/preview'
 
 export const HomePage: React.FC = () => {
     return (
