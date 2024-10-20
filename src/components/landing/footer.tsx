@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import LogoIcon from '../icons/logo-icon'
+import LogoIcon from '../icons/logo.icon'
 import Image from 'next/image'
 import LanguageSelector from '../language-selector'
 

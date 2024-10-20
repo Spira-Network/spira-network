@@ -1,9 +1,9 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import LogoIcon from './icons/logo-icon'
+import LogoIcon from './icons/logo.icon'
 import { Button } from './ui/button'
-import BurgerMenuIcon from './icons/burger-menu-icon'
+import BurgerMenuIcon from './icons/burger-menu.icon'
 import { XIcon } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
