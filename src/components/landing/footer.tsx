@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import LogoIcon from '../icons/logo-icon'
 import Image from 'next/image'
+import LanguageSelector from '../language-selector'
 
 export default function Footer() {
     return (
@@ -9,7 +10,10 @@ export default function Footer() {
                 <div className='flex flex-wrap justify-between gap-8 lg:flex-nowrap'>
                     <div className='flex flex-col gap-6 lg:justify-between'>
                         <SpiraLogo />
-                        <ContactUs />
+                        <div className='flex flex-col gap-4'>
+                            <ContactUs />
+                            <LanguageSelector />
+                        </div>
                         <Copyright />
                     </div>
                     <Links />
