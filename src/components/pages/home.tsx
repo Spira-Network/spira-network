@@ -1,4 +1,3 @@
-import { getDictionary } from '@/lib/i18n/dictionaries'
 import { Background } from '../background'
 import Areas from '../landing/areas'
 import Features from '../landing/features'
@@ -9,13 +8,7 @@ import Hero from '../landing/hero'
 import Preview from '../landing/preview'
 import Wheel from '../landing/wheel'
 
-type Props = {
-    lang: string
-}
-
-export const HomePage: React.FC<Props> = async ({ lang }) => {
-    const dictionary = await getDictionary(lang)
-
+export const HomePage: React.FC = () => {
     return (
         <>
             <div className='space-y-16 py-16 md:space-y-32'>
@@ -27,7 +20,6 @@ export const HomePage: React.FC<Props> = async ({ lang }) => {
                         <Wheel />
                     </div>
                 </div>
-                <h1>{dictionary.title}</h1>
                 <HeadlineTop />
                 <Preview />
                 <Features />
