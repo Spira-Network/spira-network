@@ -32,7 +32,7 @@ export default function Navbar() {
     }, [])
 
     const LaunchButton = () => (
-        <Button className='rounded-full bg-[#C9CEFF] px-5 py-2 font-heading text-base text-[#121212]'>
+        <Button className='h-10 rounded-full bg-[#9D84F9] px-5 py-2 font-heading text-base text-white'>
             Launch Spira
         </Button>
     )
