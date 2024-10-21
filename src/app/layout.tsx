@@ -8,6 +8,7 @@ import { Providers } from '@/components/providers'
 import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
 import Header from '@/components/header'
+import { Toaster } from '@/components/ui/sonner'
 
 export { metadata } from '@/lib/metadata'
 
@@ -32,6 +33,7 @@ export default async function RootLayout({ children, footer }: Readonly<Props>) 
                             {footer}
                         </NextIntlClientProvider>
                     </Providers>
+                    <Toaster />
                 </ThemeProvider>
             </body>
         </html>
