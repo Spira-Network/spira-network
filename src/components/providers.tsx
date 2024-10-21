@@ -6,6 +6,7 @@ import { baseSepolia } from 'wagmi/chains'
 import { type ReactNode, useState } from 'react'
 import { type State, WagmiProvider } from 'wagmi'
 import { getConfig } from '@/lib/wagmi'
+import { SessionProvider } from 'next-auth/react'
 // import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
 
 export function Providers({ children, initialState }: { children: ReactNode; initialState?: State }) {
@@ -13,14 +14,16 @@ export function Providers({ children, initialState }: { children: ReactNode; ini
     const [queryClient] = useState(() => new QueryClient())
 
     return (
-        <WagmiProvider config={config} initialState={initialState}>
-            <QueryClientProvider client={queryClient}>
-                <OnchainKitProvider apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY} chain={baseSepolia}>
-                    {/* <RainbowKitProvider modalSize='compact'> */}
-                    {children}
-                    {/* </RainbowKitProvider> */}
-                </OnchainKitProvider>
-            </QueryClientProvider>
-        </WagmiProvider>
+        <SessionProvider>
+            <WagmiProvider config={config} initialState={initialState}>
+                <QueryClientProvider client={queryClient}>
+                    <OnchainKitProvider apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY} chain={baseSepolia}>
+                        {/* <RainbowKitProvider modalSize='compact'> */}
+                        {children}
+                        {/* </RainbowKitProvider> */}
+                    </OnchainKitProvider>
+                </QueryClientProvider>
+            </WagmiProvider>
+        </SessionProvider>
     )
 }
