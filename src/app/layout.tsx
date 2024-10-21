@@ -24,7 +24,11 @@ export default async function RootLayout({ children, footer }: Readonly<Props>) 
     return (
         <html lang={locale} suppressHydrationWarning>
             <body
-                className={cn(`${spaceGrotesk.variable} ${poppins.variable}`, 'flex min-h-screen flex-col font-body')}>
+                vaul-drawer-wrapper=''
+                className={cn(
+                    `${spaceGrotesk.variable} ${poppins.variable}`,
+                    'flex min-h-screen flex-col bg-background font-body',
+                )}>
                 <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
                     <Providers>
                         <NextIntlClientProvider messages={messages}>
