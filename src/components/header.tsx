@@ -2,8 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
-import { useSession, signOut } from 'next-auth/react'
-import dynamic from 'next/dynamic'
 import LogoIcon from '@/components/icons/logo.icon'
 import BurgerMenuIcon from '@/components/icons/burger-menu.icon'
 import { XIcon } from 'lucide-react'
@@ -12,22 +10,14 @@ import Link from 'next/link'
 import AppNavigation from './navigation/app-navigation'
 import SearchBar from './navigation/search-bar'
 import ViewSwitcher from './navigation/view-switcher'
-import { Button } from '@/components/ui/button'
-
-const OnboardingWrapper = dynamic(
-    () => import('@/features/onboarding/components/onboarding').then(mod => ({ default: mod.Onboarding })),
-    {
-        ssr: false,
-    },
-)
+// eslint-disable-next-line boundaries/element-types
+import Onboarding from '@/features/profiles/components/onboarding'
 
 const BOTTOM_BAR_HEIGHT = '64px'
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [isMobile, setIsMobile] = useState(false)
-    const [isOnboardingOpen, setIsOnboardingOpen] = useState(false)
-    const { status } = useSession()
 
     useEffect(() => {
         const checkIfMobile = () => {
@@ -45,14 +35,6 @@ export default function Header() {
         }
     }, [])
 
-    const handleConnect = () => {
-        if (status === 'unauthenticated') {
-            setIsOnboardingOpen(true)
-        } else {
-            signOut()
-        }
-    }
-
     return (
         <>
             <header className='relative z-50 border-b border-white/[0.08] bg-[#121212] py-4'>
@@ -64,9 +46,7 @@ export default function Header() {
                     {!isMobile ? (
                         <div className='flex items-center gap-5'>
                             <NavbarContent />
-                            <Button onClick={handleConnect}>
-                                {status === 'authenticated' ? 'Disconnect' : 'Connect'}
-                            </Button>
+                            <Onboarding />
                         </div>
                     ) : (
                         <button onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label='Toggle menu'>
@@ -89,9 +69,7 @@ export default function Header() {
                             className='absolute left-0 right-0 top-full overflow-hidden border-b border-[#C9CEFF] bg-[#121212] px-4 shadow-lg'>
                             <div className='flex flex-col items-center gap-4 py-4'>
                                 <NavbarContent />
-                                <Button onClick={handleConnect}>
-                                    {status === 'authenticated' ? 'Disconnect' : 'Connect'}
-                                </Button>
+                                <Onboarding />
                             </div>
                         </motion.div>
                     )}
@@ -106,8 +84,6 @@ export default function Header() {
                     </div>
                 </div>
             )}
-
-            <OnboardingWrapper isOpen={isOnboardingOpen} onClose={() => setIsOnboardingOpen(false)} />
         </>
     )
 }
