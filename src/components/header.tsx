@@ -1,19 +1,33 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
+import { useSession, signOut } from 'next-auth/react'
+import dynamic from 'next/dynamic'
 import LogoIcon from '@/components/icons/logo.icon'
-import { Button } from '@/components/ui/button'
 import BurgerMenuIcon from '@/components/icons/burger-menu.icon'
 import { XIcon } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
-import AppNavigation from '@/features/navigation/components/app-navigation'
+import AppNavigation from './navigation/app-navigation'
+import SearchBar from './navigation/search-bar'
+import ViewSwitcher from './navigation/view-switcher'
+import { Button } from '@/components/ui/button'
+
+const OnboardingWrapper = dynamic(
+    () => import('@/features/onboarding/components/onboarding').then(mod => ({ default: mod.Onboarding })),
+    {
+        ssr: false,
+    },
+)
 
 const BOTTOM_BAR_HEIGHT = '64px'
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [isMobile, setIsMobile] = useState(false)
+    const [isOnboardingOpen, setIsOnboardingOpen] = useState(false)
+    const { status } = useSession()
 
     useEffect(() => {
         const checkIfMobile = () => {
@@ -31,11 +45,13 @@ export default function Header() {
         }
     }, [])
 
-    const LaunchButton = () => (
-        <Button className='h-10 rounded-full bg-[#9D84F9] px-5 py-2 font-heading text-base text-white'>
-            Launch Spira
-        </Button>
-    )
+    const handleConnect = () => {
+        if (status === 'unauthenticated') {
+            setIsOnboardingOpen(true)
+        } else {
+            signOut()
+        }
+    }
 
     return (
         <>
@@ -47,7 +63,10 @@ export default function Header() {
                     </Link>
                     {!isMobile ? (
                         <div className='flex items-center gap-5'>
-                            <AppNavigation />
+                            <NavbarContent />
+                            <Button onClick={handleConnect}>
+                                {status === 'authenticated' ? 'Disconnect' : 'Connect'}
+                            </Button>
                         </div>
                     ) : (
                         <button onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label='Toggle menu'>
@@ -69,7 +88,10 @@ export default function Header() {
                             transition={{ duration: 0.3 }}
                             className='absolute left-0 right-0 top-full overflow-hidden border-b border-[#C9CEFF] bg-[#121212] px-4 shadow-lg'>
                             <div className='flex flex-col items-center gap-4 py-4'>
-                                <p className='text-white'>Follow us for updates</p>
+                                <NavbarContent />
+                                <Button onClick={handleConnect}>
+                                    {status === 'authenticated' ? 'Disconnect' : 'Connect'}
+                                </Button>
                             </div>
                         </motion.div>
                     )}
@@ -78,13 +100,26 @@ export default function Header() {
 
             {isMobile && (
                 <div
-                    className='fixed bottom-0 left-0 right-0 z-50 border-t border-[#C9CEFF] bg-[#121212] px-4 py-3'
-                    style={{ height: BOTTOM_BAR_HEIGHT }}>
+                    className={`fixed bottom-0 left-0 right-0 z-50 border-t border-[#C9CEFF] bg-[#121212] px-4 py-3 h-[${BOTTOM_BAR_HEIGHT}]`}>
                     <div className='flex items-center justify-between'>
                         <AppNavigation />
                     </div>
                 </div>
             )}
+
+            <OnboardingWrapper isOpen={isOnboardingOpen} onClose={() => setIsOnboardingOpen(false)} />
+        </>
+    )
+}
+
+const NavbarContent = () => {
+    const pathname = usePathname()
+    const isLandingPage = pathname === '/'
+
+    return (
+        <>
+            {!isLandingPage && <SearchBar />}
+            <ViewSwitcher />
         </>
     )
 }
