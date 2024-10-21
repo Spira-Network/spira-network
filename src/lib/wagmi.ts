@@ -16,6 +16,7 @@ const connectors = connectorsForWallets(
     ],
     {
         appName: 'Spira Network',
+        appIcon: '/favicon.svg',
         projectId: process.env.NEXT_PUBLIC_REOWN_PROJECT_ID || '',
     },
 )
