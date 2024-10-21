@@ -3,14 +3,14 @@
     "version": "0.0.1",
     "private": true,
     "scripts": {
+        "build": "next build",
         "db:generate": "drizzle-kit generate",
         "db:migrate": "drizzle-kit migrate --config=drizzle.config.ts",
         "db:studio": "drizzle-kit studio",
         "dev": "next dev --port 3003 --experimental-https",
-        "build": "next build",
-        "start": "next start",
+        "format": "prettier --write .",
         "lint": "next lint",
-        "format": "prettier --write ."
+        "start": "next start"
     },
     "dependencies": {
         "@auth/drizzle-adapter": "1.7.2",
